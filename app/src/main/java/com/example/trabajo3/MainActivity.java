@@ -43,13 +43,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         sp =  getSharedPreferences(aea1, Context.MODE_PRIVATE);
-
+        String coood = sp.getString("codigo", "");
         String nombre = sp.getString("nombre" , "");
         String precio = sp.getString("precio" , "");
         String cantidad = sp.getString("cantidad" , "");
 
 
+    if(aea1.length() < 0 || !coood.equals(aea1)){
 
+        Toast.makeText(this, "Producto no encontrado", Toast.LENGTH_SHORT).show();
+        codigos.setText("");
+        nombres.setText("");
+        precios.setText("");
+        stock.setText("");
+    }
 
 
 
@@ -58,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         stock.setText(cantidad);
 
 
-        Toast.makeText(this, nombre+"Nombre Guardado...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Producto  encontrado", Toast.LENGTH_SHORT).show();
 
 
 
@@ -75,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("cantidad", cantidad);
         editor.commit();
 
-        Toast.makeText(this, "Nombre Guardado...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, nombre +" Guardado...", Toast.LENGTH_SHORT).show();
 
     }
 
